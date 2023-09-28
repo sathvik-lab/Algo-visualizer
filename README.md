@@ -11,8 +11,8 @@ Building an open-source website that demonstrates & visualizes the workings of d
 - [x]  Basic Layout
 - [x]  Edit Navbar
 - [x]  Add routes
-- [ ]  add scroll bar
-- [ ]  add styles to the main section
+- [x]  add scroll bar
+- [x]  add styles to the main section
 - [ ]  add color picker
 - [ ]  merge sort algorithm
 - [ ]  add animations & transitions
@@ -21,6 +21,7 @@ Building an open-source website that demonstrates & visualizes the workings of d
 - [ ]  insertion sort
 - [ ]  selection sort
 - [ ]  expand with graph algorithms
+- [ ]  error with the tool tip (when you hover over the last element from the array)
 
 ## Authors
 
