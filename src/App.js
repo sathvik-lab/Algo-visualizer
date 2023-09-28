@@ -1,25 +1,27 @@
 import React from 'react';
-import Home from './components/SortingVisualizer/Home';
+import Home from './components/Home';
 import './App.css';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom"
+import NavbarComp from './components/Navbar';
 
 function App() {
   return (
     <div className="App">
+      <NavbarComp />
 
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          {/* <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/rateus' element={<Rateus />} />
-          <Route path='/donor' element={<Donor presentUser={presentUser} />} />
-          <Route path='/receiver' element={<Receiver presentUser={presentUser} />} />
-          <Route path='/home' element={presentUser ? (<Home presentUser={presentUser} />) : <Login />} /> */}
+          {/* <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} /> */}
+
 
         </Routes>
       </Router>

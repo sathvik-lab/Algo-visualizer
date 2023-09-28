@@ -1,9 +1,11 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Navbar.css'
+import 'cdbreact';
 
 function NavbarComp() {
     return (
@@ -13,14 +15,12 @@ function NavbarComp() {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}>
-                        <Nav.Link href="#action1">Home</Nav.Link>
-                        <Nav.Link href="#action2">Movies</Nav.Link>
-                        <NavDropdown title="Browse" id="navbarScrollingDropdown" >
-                            <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">Comedy</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action5">TV Shows</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link href="/">Merge</Nav.Link>
+                        <Nav.Link href="/quick">Quick</Nav.Link>
+                        <Nav.Link href="/bubble">Bubble</Nav.Link>
+                        <Nav.Link href="/insert">Insertion</Nav.Link>
+                        <Nav.Link href="/select">Selection</Nav.Link>
+                        <Nav.Link href="/graphs">Graphs</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
