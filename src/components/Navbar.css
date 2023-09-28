@@ -1,0 +1,93 @@
+/* Custom CSS for Navbar */
+.navbar-custom {
+    background-color: #000;
+    /* Background color */
+    height: 80px;
+    /* Increase the height of the Navbar */
+}
+
+.navbar-custom .navbar-brand {
+    font-size: 24px;
+    /* Increase the font size of the brand */
+    color: #fff;
+    /* Text color */
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Uppercase text */
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-color: #000;
+    /* Change the color of the Navbar toggle icon */
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    font-size: 16px;
+    /* Increase the font size of the links */
+    color: #fff;
+    /* Text color */
+    margin-right: 15px;
+    /* Add spacing between the links */
+    text-transform: uppercase;
+    /* Uppercase text */
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #0073e6;
+    /* Change link color on hover (Prime Video blue) */
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: #000;
+    /* Change the border color of the toggle button */
+}
+
+/* Custom CSS for Navbar */
+.navbar-custom {
+    background-color: #000;
+    /* Background color */
+    height: 80px;
+    /* Increase the height of the Navbar */
+}
+
+.navbar-custom .navbar-brand {
+    font-size: 24px;
+    /* Increase the font size of the brand */
+    color: #fff;
+    /* Text color */
+    font-weight: bold;
+    text-transform: uppercase;
+    /* Uppercase text */
+}
+
+.navbar-custom .navbar-toggler:hover .navbar-toggler-icon {
+    background-color: #000 !important;
+    /* Change toggle icon color on hover */
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    font-size: 16px;
+    /* Increase the font size of the links */
+    color: #fff;
+    /* Text color */
+    margin-right: 15px;
+    /* Add spacing between the links */
+    text-transform: uppercase;
+    /* Uppercase text */
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #0073e6;
+    /* Change link color on hover (Prime Video blue) */
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: #000;
+    /* Change the border color of the toggle button */
+}
+
+/* Change the background color of the collapsed section */
+.navbar-custom .navbar-collapse {
+    background-color: #000;
+    /* Background color of the collapsed section */
+}

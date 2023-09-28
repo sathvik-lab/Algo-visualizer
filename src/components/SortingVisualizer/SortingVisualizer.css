@@ -1,0 +1,40 @@
+/* SortingVisualizer.css */
+.sorting-visualizer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.array-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 500px;
+}
+
+.array-bar {
+  width: 2px;
+  margin: 1px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005bbd;
+  /* Slightly darker blue on hover */
+}
+
+/* You may need to add more styles to match the exact Amazon Prime UI */
