@@ -7,17 +7,22 @@ const tooltip = (v) => (
         Height: <i>{v}</i>
     </Tooltip>
 );
-const ArrayBar = ({ value, barWidth, PRIMARY_COLOR, ANIMATION_SPEED_MS }) => {
+const ArrayBar = ({ value, barWidth, PRIMARY_COLOR, speed }) => {
 
     return (
-        <Whisper placement="top" controlId="control-id-hover" trigger="hover" speaker={tooltip(value)}>
+        <Whisper
+            placement="top"
+            trigger="hover"
+            speaker={tooltip(value)}
+            container={() => document.body} // Define a container for the tooltip
+        >
             <div
                 className="array-bar"
                 style={{
                     backgroundColor: PRIMARY_COLOR,
                     height: `${value}px`,
                     width: `${barWidth}px`,
-                    transition: `background-color ${ANIMATION_SPEED_MS}ms`,
+                    transition: `background-color ${speed}ms`,
                     border: `0.2px solid beige`,
                     cursor: `pointer`
                 }}

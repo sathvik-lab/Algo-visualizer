@@ -75,3 +75,48 @@ function doMerge(
     mainArray[k++] = auxiliaryArray[j++];
   }
 }
+
+export function getQuickSortAnimations(array) {
+  const animations = [];
+  if (array.length <= 1) return animations;
+  const auxiliaryArray = array.slice();
+  quickSortHelper(auxiliaryArray, 0, array.length - 1, animations);
+  return animations;
+}
+
+function quickSortHelper(mainArray, startIdx, endIdx, animations) {
+  if (startIdx >= endIdx) return;
+
+  const pivotIdx = partition(mainArray, startIdx, endIdx, animations);
+
+  quickSortHelper(mainArray, startIdx, pivotIdx - 1, animations);
+  quickSortHelper(mainArray, pivotIdx + 1, endIdx, animations);
+}
+
+function partition(mainArray, startIdx, endIdx, animations) {
+  const pivotValue = mainArray[startIdx];
+  let pivotIdx = startIdx;
+
+  let i = startIdx, j = endIdx - 1;
+
+  while (i < j) {
+    while (mainArray[i] <= pivotValue) i++;
+    while (mainArray[j] > pivotValue) j--;
+    if (i < j) {
+      animations.push([i, j]);
+      animations.push([i, j]);
+      const temp = mainArray[i];
+      mainArray[i] = mainArray[j];
+      mainArray[j] = temp;
+    }
+  }
+
+
+  animations.push([pivotIdx, j]);
+  animations.push([pivotIdx, j]);
+  const temp = mainArray[pivotIdx];
+  mainArray[pivotIdx] = mainArray[j];
+  mainArray[j] = temp;
+
+  return j;
+}
