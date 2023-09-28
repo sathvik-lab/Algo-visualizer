@@ -9,8 +9,8 @@ Building an open-source website that demonstrates & visualizes the workings of d
 ## To-Do List
 
 - [x]  Basic Layout
-- [ ]  Edit Navbar
-- [ ]  Add routes
+- [x]  Edit Navbar
+- [x]  Add routes
 - [ ]  add scroll bar
 - [ ]  add styles to the main section
 - [ ]  add color picker
