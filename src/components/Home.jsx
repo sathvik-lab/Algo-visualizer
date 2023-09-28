@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import Graphs from './GraphVizualizer/Graphs.js';
-import Sorts from './SortingVisualizer/Sorts.js';
+import Sorts from './SortingVisualizer/Sorting.js';
 import './Home.css';
 
 
