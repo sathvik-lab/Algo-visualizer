@@ -13,6 +13,7 @@ Building an open-source website that demonstrates & visualizes the workings of d
 - [x]  Add routes
 - [x]  add scroll bar
 - [x]  add styles to the main section
+- [ ]  add dynamic animation time
 - [ ]  add color picker
 - [ ]  merge sort algorithm
 - [ ]  add animations & transitions
