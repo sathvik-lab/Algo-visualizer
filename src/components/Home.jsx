@@ -5,30 +5,7 @@ import './Home.css';
 
 
 function Home() {
-
-
-  const location = useLocation();
-
-  // Access the current route using location.pathname
-  const currentRoute = location.pathname;
-
-  let component;
-  switch (currentRoute) {
-    case '/graph':
-      component = <Graphs current={currentRoute} />
-      break;
-    default:
-      component = <Sorts current={currentRoute} />
-      break;
-  }
-
-
-
-  return (
-    <>
-      {component}
-    </>
-  );
+  return (<Sorts />)
 }
 
 // Rest of your code remains the same

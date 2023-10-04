@@ -95,28 +95,123 @@ function quickSortHelper(mainArray, startIdx, endIdx, animations) {
 
 function partition(mainArray, startIdx, endIdx, animations) {
   const pivotValue = mainArray[startIdx];
-  let pivotIdx = startIdx;
+  let left = startIdx + 1;
+  let right = endIdx;
+  animations.push([startIdx, startIdx, false]);
 
-  let i = startIdx, j = endIdx - 1;
-
-  while (i < j) {
-    while (mainArray[i] <= pivotValue) i++;
-    while (mainArray[j] > pivotValue) j--;
-    if (i < j) {
-      animations.push([i, j]);
-      animations.push([i, j]);
-      const temp = mainArray[i];
-      mainArray[i] = mainArray[j];
-      mainArray[j] = temp;
+  while (left < right) {
+    while (left <= right && mainArray[left] < pivotValue) {
+      // animations.push([left, startIdx, false]); // Compare animation
+      // animations.push([left, startIdx, false]); // Compare animation
+      left++;
     }
+    while (right >= left && mainArray[right] > pivotValue) {
+      // animations.push([right, startIdx, false]); // Compare animation
+      // animations.push([right, startIdx, false]); // Compare animation
+      right--;
+    }
+    if (left >= right) break;
+
+    // animations.push([left, right, false]); // Swap animation
+    animations.push([left, right, true]); // Swap animation
+    // animations.push([left, right, false]); // Swap animation
+    const temp = mainArray[left];
+    mainArray[left] = mainArray[right];
+    mainArray[right] = temp;
   }
 
+  // animations.push([startIdx, right, false]); // Swap animation
+  animations.push([startIdx, right, true]); // Swap animation
+  // animations.push([startIdx, right, false]); // Swap animation
+  const temp = mainArray[startIdx];
+  mainArray[startIdx] = mainArray[right];
+  mainArray[right] = temp;
 
-  animations.push([pivotIdx, j]);
-  animations.push([pivotIdx, j]);
-  const temp = mainArray[pivotIdx];
-  mainArray[pivotIdx] = mainArray[j];
-  mainArray[j] = temp;
-
-  return j;
+  return right;
 }
+
+
+
+export function getBubbleSortAnimations(array) {
+  const animations = [];
+  if (array.length <= 1) return array.slice();
+
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < array.length - 1; i++) {
+      // Push indices for comparison
+      animations.push([i, i + 1]);
+      // Revert color back to primary
+      animations.push([i, i + 1]);
+
+      if (array[i] > array[i + 1]) {
+        // Push indices for swap
+        animations.push([i, i + 1, true]);
+        // Swap elements
+        const temp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
+        swapped = true;
+      }
+    }
+  } while (swapped);
+
+  return animations;
+}
+
+
+export function getSelectionSortAnimations(array) {
+  const animations = [];
+  const n = array.length;
+
+  for (let i = 0; i < n - 1; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < n; j++) {
+      // Push indices for comparison
+      animations.push([i, j, false]);
+      // Push indices to revert color
+      animations.push([i, j, false]);
+
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+    }
+
+    // Push indices for swap
+    animations.push([i, minIndex, true]);
+    // Push indices to revert color after swap
+    animations.push([i, minIndex, false]);
+
+    // Swap array elements
+    const temp = array[i];
+    array[i] = array[minIndex];
+    array[minIndex] = temp;
+  }
+
+  return animations;
+}
+
+
+export const getInsertionSortAnimations = (array) => {
+  const animations = [];
+  const n = array.length;
+
+  for (let i = 1; i < n; i++) {
+    let key = array[i];
+    let j = i - 1;
+    animations.push([i, j, false]); // Highlight current elements being compared
+
+    while (j >= 0 && array[j] > key) {
+      animations.push([j + 1, j, true]); // Swap animation
+      array[j + 1] = array[j];
+      j--;
+    }
+    array[j + 1] = key;
+
+    // Highlight the sorted element
+    animations.push([i, i, false]);
+  }
+
+  return animations;
+};

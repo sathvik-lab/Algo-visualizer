@@ -3,7 +3,14 @@ import Slider from 'rsuite/Slider';
 import 'rsuite/dist/rsuite.min.css';
 
 const SliderComponent = ({ numBars, setNumBars }) => {
-    const style = { width: 1000 };
+    const minNumBars = 10;
+    const maxNumBars = 300;
+    // const backgroundColor = numBars < maxNumBars / 2 ? 'black' : 'transparent'; // Set background to black if numBars is less than half of the maximum
+
+    const style = {
+        width: 300,
+        backgroundColor: 'black', // Set the background color dynamically
+    };
 
     const handleSliderChange = (value) => {
         setNumBars(value);
@@ -14,15 +21,11 @@ const SliderComponent = ({ numBars, setNumBars }) => {
             <div style={style}>
                 <Slider
                     value={numBars}
-                    min={10} // Adjust min and max as needed
-                    step={20}
-                    max={300}
+                    min={minNumBars}
+                    max={maxNumBars}
                     graduated
                     progress
                     onChange={handleSliderChange}
-                    renderMark={(mark) => {
-                        return <span>{mark}</span>;
-                    }}
                 />
             </div>
         </>

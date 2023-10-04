@@ -15,11 +15,7 @@ function NavbarComp() {
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}>
-                        <Nav.Link href="/sort">Merge</Nav.Link>
-                        <Nav.Link href="/sort/quick">Quick</Nav.Link>
-                        <Nav.Link href="/sort/bubble">Bubble</Nav.Link>
-                        <Nav.Link href="/sort/insert">Insertion</Nav.Link>
-                        <Nav.Link href="/sort/select">Selection</Nav.Link>
+                        <Nav.Link href="/sort">Sort</Nav.Link>
                         <Nav.Link href="/graphs">Graphs</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

@@ -14,12 +14,13 @@ const PRIMARY_COLOR = '#0073e6'; // Amazon Prime blue
 const SECONDARY_COLOR = 'red';
 
 
-const Sorts = ({ current }) => {
+const Sorts = () => {
     const [array, setArray] = useState([]);
     const [numBars, setNumBars] = useState(100); // Initial number of array bars
     const [barWidth, setBarWidth] = useState(1); // Initial width of array bars
     const [speed, setSpeed] = useState(max_speed);
     const arrayContainerRef = useRef(null);
+    const arrayBarsRef = useRef([]);
 
 
     const resetArray = () => {
@@ -30,15 +31,19 @@ const Sorts = ({ current }) => {
         setArray(newArray);
     };
 
-    const animationSpeed = () => {
-        // Calculate speed based on the number of array elements
-        const baseSpeed = (max_bars - numBars) * (max_speed - min_speed) / (max_bars - 1) + min_speed;
+    const calculateAnimationSpeed = () => {
+        // Calculate base delay
+        const baseDelay = 100; // Minimum delay in milliseconds
+        const delayFactor = 1 + (200 - numBars) / 100; // Increase delay for smaller arrays
 
-        // Ensure that the speed is within the defined limits
-        const finalSpeed = Math.min(max_speed, Math.max(min_speed, baseSpeed));
+        // Calculate final delay
+        const finalDelay = baseDelay * delayFactor;
 
-        setSpeed(finalSpeed);
+        return finalDelay / 20;
     };
+
+
+
 
     const updateBarWidth = () => {
         if (arrayContainerRef.current) {
@@ -47,16 +52,41 @@ const Sorts = ({ current }) => {
             setBarWidth(newWidth);
         }
     };
+
     useEffect(() => {
         resetArray();
         updateBarWidth();
-        animationSpeed();
-    }, [numBars]); // Reset the array and update bar width whenever numBars changes
+        setSpeed(calculateAnimationSpeed());
+    }, [numBars]);
+
+    // useEffect(() => {
+    // }, [numBars, arrayBarsRef.current]);
 
     function randomIntFromInterval(min, max) {
         // min and max included
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
+
+    const handleMergeSort = () => {
+        // console.log("Array before mergeSort:", array);
+        mergeSort({ array, speed });
+    };
+
+    const handleQuickSort = () => {
+        quickSort({ array, speed });
+    };
+
+    const handleSelectionSort = () => {
+        selectionSort({ array, speed });
+    };
+
+    const handleInsertionSort = () => {
+        insertionSort({ array, speed });
+    };
+
+    const handleBubbleSort = () => {
+        bubbleSort({ array, speed });
+    };
 
 
     return (
@@ -64,9 +94,6 @@ const Sorts = ({ current }) => {
 
             <Container fluid className="full-height">
                 <Card className="full-height">
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '3px' }} >
-                        <SliderComponent numBars={numBars} setNumBars={setNumBars} />
-                    </div>
                     <Card.Body>
                         <div className="array-container" ref={arrayContainerRef}>
                             {array.map((value, idx) => (
@@ -76,19 +103,25 @@ const Sorts = ({ current }) => {
                                     barWidth={barWidth}
                                     PRIMARY_COLOR={PRIMARY_COLOR}
                                     speed={speed}
+                                    className='array-bar' // This sets the class name of each ArrayBar component
                                 />
                             ))}
                         </div>
 
                     </Card.Body>
-                    <Card.Footer>
-                        <Button variant="outline-primary button" onClick={() => resetArray()}>Generate New Array</Button>
-                        {current === '/sort/' && <Button variant="outline-success button" onClick={() => mergeSort({ array, speed })}>Merge Sort</Button>}
-                        {current === '/sort/quick' && <Button variant="outline-success button" onClick={() => quickSort({ array, speed })}>Quick Sort</Button>}
-                        {current === '/sort/select' && <Button variant="outline-success button" onClick={() => selectionSort({ array, speed })}>Selection Sort</Button>}
-                        {current === '/sort/insert' && <Button variant="outline-success button" onClick={() => insertionSort({ array, speed })}>Insertion Sort</Button>}
-                        {current === '/sort/bubble' && <Button variant="outline-success button" onClick={() => bubbleSort({ array, speed })}>Bubble Sort</Button>}
+                    <Card.Footer style={{ backgroundColor: '#3322', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <SliderComponent numBars={numBars} setNumBars={setNumBars} />
+
+                        <div>
+                            <Button variant="outline-primary button-sm me-2" onClick={() => resetArray()}>Generate New Array</Button>
+                            <Button variant="outline-success button-sm me-2" onClick={handleMergeSort}>Merge Sort</Button>
+                            <Button variant="outline-danger button-sm me-2" onClick={handleQuickSort}>Quick Sort</Button>
+                            <Button variant="outline-dark button-sm me-2" onClick={handleSelectionSort}>Selection Sort</Button>
+                            <Button variant="outline-info button-sm me-2" onClick={handleInsertionSort}>Insertion Sort</Button>
+                            <Button variant="outline-secondary button-sm me-2" onClick={handleBubbleSort}>Bubble Sort</Button>
+                        </div>
                     </Card.Footer>
+
                 </Card>
             </Container >
 
