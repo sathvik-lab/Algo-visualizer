@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Graphs = ({ }) => {
+const Graphs = () => {
     return (
         <>TBD GRAPHS</>
     )
