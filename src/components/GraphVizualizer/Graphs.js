@@ -2,9 +2,7 @@ import React from 'react'
 
 const Graphs = ({ }) => {
     return (
-        <div>
-
-        </div>
+        <>TBD GRAPHS</>
     )
 }
 
