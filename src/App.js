@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"
 import NavbarComp from './components/Navbar';
 import Graphs from './components/GraphVizualizer/Graphs';
-import Sorts from './components/SortingVisualizer/Sorting';
+// import Sorts from './components/SortingVisualizer/Sorting';
 
 function App() {
   return (

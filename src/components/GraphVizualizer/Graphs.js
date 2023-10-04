@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Graphs = ({ current }) => {
+const Graphs = ({ }) => {
     return (
         <div>
 
