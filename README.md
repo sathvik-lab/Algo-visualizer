@@ -18,9 +18,9 @@ Building an open-source website that demonstrates & visualizes the workings of d
 - [x]  merge sort algorithm
 - [x]  add animations & transitions
 - [ ]  quick sort
-- [ ]  bubble sort
-- [ ]  insertion sort
-- [ ]  selection sort
+- [x]  bubble sort
+- [x]  insertion sort
+- [x]  selection sort
 - [ ]  expand with graph algorithms
 - [ ]  error with the tool tip (when you hover over the last element from the array)
 
