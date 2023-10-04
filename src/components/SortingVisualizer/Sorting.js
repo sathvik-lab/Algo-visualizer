@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import SliderComponent from './slider.js';
 import './Sorting.css'
 import Button from 'react-bootstrap/Button';
@@ -8,10 +8,10 @@ import ArrayBar from './Bar.js';
 import { mergeSort, quickSort, insertionSort, selectionSort, bubbleSort } from './AnimateSorting.js';
 
 const max_speed = 10;
-const min_speed = 0.1;
-const max_bars = 300;
+// const min_speed = 0.1;
+// const max_bars = 300;
 const PRIMARY_COLOR = '#0073e6'; // Amazon Prime blue
-const SECONDARY_COLOR = 'red';
+// const SECONDARY_COLOR = 'red';
 
 
 const Sorts = () => {
@@ -20,18 +20,18 @@ const Sorts = () => {
     const [barWidth, setBarWidth] = useState(1); // Initial width of array bars
     const [speed, setSpeed] = useState(max_speed);
     const arrayContainerRef = useRef(null);
-    const arrayBarsRef = useRef([]);
+    // const arrayBarsRef = useRef([]);
 
 
-    const resetArray = () => {
+    const resetArray = useCallback(() => {
         const newArray = [];
         for (let i = 0; i < numBars; i++) {
             newArray.push(randomIntFromInterval(5, 700));
         }
         setArray(newArray);
-    };
+    }, [numBars]);
 
-    const calculateAnimationSpeed = () => {
+    const calculateAnimationSpeed = useCallback(() => {
         // Calculate base delay
         const baseDelay = 100; // Minimum delay in milliseconds
         const delayFactor = 1 + (200 - numBars) / 100; // Increase delay for smaller arrays
@@ -40,24 +40,25 @@ const Sorts = () => {
         const finalDelay = baseDelay * delayFactor;
 
         return finalDelay / 20;
-    };
+    }, [numBars]);
 
 
 
 
-    const updateBarWidth = () => {
+    const updateBarWidth = useCallback(() => {
         if (arrayContainerRef.current) {
             const containerWidth = arrayContainerRef.current.offsetWidth;
             const newWidth = Math.min(containerWidth / numBars, 100);
             setBarWidth(newWidth);
         }
-    };
+    }, [numBars]);
 
     useEffect(() => {
         resetArray();
         updateBarWidth();
-        setSpeed(calculateAnimationSpeed());
-    }, [numBars]);
+        const speed = calculateAnimationSpeed();
+        setSpeed(speed);
+    }, [numBars, resetArray, updateBarWidth, calculateAnimationSpeed]);
 
     // useEffect(() => {
     // }, [numBars, arrayBarsRef.current]);
